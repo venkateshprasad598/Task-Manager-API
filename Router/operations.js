@@ -1,9 +1,13 @@
+const Task = require("./schema");
+
 const getAllTasks = (req, res) => {
   res.send("Hello World");
 };
-const createTheTask = (req, res) => {
-  console.log("Create the task");
-  res.send("Hello create");
+
+const createTheTask = async (req, res) => {
+  // const task = await Task.create(req.body);
+  // console.log(task);
+  res.status(201).json(req.body);
 };
 const getSingleTask = (req, res) => {
   console.log("Create single task");
