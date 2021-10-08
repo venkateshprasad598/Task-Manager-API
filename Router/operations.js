@@ -30,9 +30,20 @@ const getSingleTask = async (req, res) => {
     res.status(500).json("ERROR!!");
   }
 };
-const editTheTask = (req, res) => {
-  console.log("Edit the task");
-  res.send("Hello Edit");
+const editTheTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const editTask = await Task.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!editTask) {
+      res.status(500).json("Enter Correct ID");
+    }
+    res.status(200).json({ editTask });
+  } catch (err) {
+    res.status(404).json("ERROR!!");
+  }
 };
 const deleteTheTask = async (req, res) => {
   try {
