@@ -1,14 +1,13 @@
 const express = require("express");
 const app = express();
+// Middleware
+app.use(express.json());
 // Secret Varibles and Connect to DB
 require("dotenv").config();
 const connectedDB = require("./Router/connection");
 // Tasks Router
 const tasks = require("./Router/router");
 app.use("/api/v1/tasks", tasks);
-
-// Middleware
-app.use(express.json());
 
 //Home
 app.get("/", (req, res) => {

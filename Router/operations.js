@@ -5,9 +5,9 @@ const getAllTasks = (req, res) => {
 };
 
 const createTheTask = async (req, res) => {
-  // const task = await Task.create(req.body);
-  // console.log(task);
-  res.status(201).json(req.body);
+  const tasks = await Task.create(req.body);
+  console.log(tasks);
+  res.status(201).json({ tasks });
 };
 const getSingleTask = (req, res) => {
   console.log("Create single task");
