@@ -57,6 +57,7 @@ const deleteTheTask = async (req, res) => {
     res.status(500).json("ERROR!!");
   }
 };
+
 module.exports = {
   getAllTasks,
   createTheTask,

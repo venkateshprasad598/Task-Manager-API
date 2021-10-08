@@ -9,10 +9,9 @@ const connectedDB = require("./Router/connection");
 const tasks = require("./Router/router");
 app.use("/api/v1/tasks", tasks);
 
-//Home
-app.get("/", (req, res) => {
-  res.send("Hello MY Home");
-});
+//NOT FOUND
+const notFound = require("./Router/Error");
+app.use(notFound);
 
 const start = async () => {
   try {
