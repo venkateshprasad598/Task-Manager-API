@@ -34,9 +34,17 @@ const editTheTask = (req, res) => {
   console.log("Edit the task");
   res.send("Hello Edit");
 };
-const deleteTheTask = (req, res) => {
-  console.log("Delete the task");
-  res.send("Hello Delete");
+const deleteTheTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteTask = await Task.findOneAndDelete({ _id: id });
+    if (!deleteTask) {
+      return res.status(404).json("Enter Correct ID");
+    }
+    res.status(200).json({ deleteTask });
+  } catch (err) {
+    res.status(500).json("ERROR!!");
+  }
 };
 module.exports = {
   getAllTasks,
